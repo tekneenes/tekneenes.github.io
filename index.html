@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- MANDATORY Modern Web Guidance: Declare support for both light and dark themes -->
+  <meta name="color-scheme" content="light dark">
+  <script>
+    try {
+      document.querySelector('meta[name="color-scheme"]').content = localStorage.getItem("color-scheme") ?? "light dark";
+    } catch (e) {}
+  </script>
+  <title>Muhammed Enes Tekne | Senior Full-Stack &amp; Mobile Solutions Architect</title>
+  <meta name="description" content="Muhammed Enes Tekne — Kurumsal mobil mühendislik (Flutter, Dart, Native iOS/Android), ölçeklenebilir SaaS web mimarileri (React, TypeScript), Firebase bulut altyapısı ve ileri düzey 3D WebGL / C++ Ar-Ge çözümleri üreten Kıdemli Yazılım Mimarı.">
+  <link rel="canonical" href="https://tekneenes.github.io">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tekneenes.github.io">
+  <meta property="og:title" content="Muhammed Enes Tekne — Senior Full-Stack &amp; Mobile Solutions Architect">
+  <meta property="og:description" content="Fikirden Prodüksiyona: Ölçeklenebilir Mobil ve Bulut Çözümleri Üreten Yazılım Mimarı. 7+ Canlı Prodüksiyon Sistemi ve 18+ GitHub Deposu.">
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Muhammed Enes Tekne",
+      "jobTitle": "Senior Full-Stack & Mobile Solutions Architect",
+      "url": "https://tekneenes.github.io",
+      "email": "mailto:teknemuhammedenes58@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "TR",
+        "addressLocality": "İstanbul"
+      },
+      "sameAs": [
+        "https://github.com/tekneenes",
+        "https://www.linkedin.com/in/muhammed-enes-tekne",
+        "https://tekneenes.github.io"
+      ]
+    }
+  </script>
+
+  <!-- Google Fonts: Space Grotesk (PP Frama geometric vibe) & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <noscript>
+    <style>.transition { display: none !important; }</style>
+  </noscript>
+</head>
+<body>
+  <!-- Page Entry Pixelated Grid Reveal Overlay -->
+  <div class="transition" aria-hidden="true"></div>
+
+  <!-- ========================================================================
+       FLOATING TWO-STEP NAVIGATION (.tsnav) + THEME SWITCHER
+       ======================================================================== -->
+  <nav class="tsnav" data-twostep-nav data-nav-status="not-active" aria-label="Ana Menü">
+    <div class="tsnav__bg" data-nav-toggle="close" aria-hidden="true"></div>
+    <div class="tsnav__wrap">
+      <div class="tsnav__width">
+        <div class="tsnav__bar">
+          <div class="tsnav__back" aria-hidden="true">
+            <div class="tsnav__back-bg"></div>
+          </div>
+
+          <div class="tsnav__top">
+            <a class="tsnav__logo" href="#top" aria-label="Muhammed Enes Tekne Ana Sayfa">
+              <span class="tsnav__logo-mark">MET</span>
+              <span>MUHAMMED ENES TEKNE</span>
+              <span class="tsnav__logo-badge">Müsait</span>
+            </a>
+
+            <div class="tsnav__controls">
+              <!-- Two-state Light / Dark Theme Toggle synced with <meta name="color-scheme"> -->
+              <button type="button" class="theme-toggle" data-theme-toggle aria-label="Temayı değiştir">
+                <span class="theme-toggle__light-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                  </svg>
+                  <span>Koyu Tema</span>
+                </span>
+                <span class="theme-toggle__dark-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                  </svg>
+                  <span>Açık Tema</span>
+                </span>
+              </button>
+
+              <button class="tsnav__toggle" data-nav-toggle="toggle" aria-expanded="false" aria-controls="nav-panel" aria-label="Menüyü aç">
+                <span class="tsnav__toggle-icon" aria-hidden="true">
+                  <i class="tsnav__toggle-bar"></i>
+                  <i class="tsnav__toggle-bar"></i>
+                </span>
+                <span class="tsnav__toggle-words" aria-hidden="true">
+                  <span class="tsnav__toggle-word tsnav__toggle-word--menu">Menü</span>
+                  <span class="tsnav__toggle-word tsnav__toggle-word--close">Kapat</span>
+                </span>
+              </button>
+            </div>
+
+            <div class="tsnav__top-line" aria-hidden="true"></div>
+          </div>
+
+          <div class="tsnav__bottom" id="nav-panel">
+            <div class="tsnav__bottom-overflow">
+              <div class="tsnav__bottom-inner">
+                <div class="tsnav__row">
+                  <div class="tsnav__col tsnav__col--info">
+                    <p class="tsnav__eyebrow">Gezinti</p>
+                    <ul class="tsnav__ul">
+                      <li><a class="tsnav__li" href="#top">Ana Sayfa</a></li>
+                      <li><a class="tsnav__li" href="#projects">Vaka Analizleri (10)</a></li>
+                      <li><a class="tsnav__li" href="#expertise">Mimari Katmanlar</a></li>
+                      <li><a class="tsnav__li" href="#services">Yetkinlik Alanları</a></li>
+                      <li><a class="tsnav__li" href="#process">SLA Prensipleri</a></li>
+                      <li><a class="tsnav__li" href="#insights">Teknik Makaleler</a></li>
+                      <li><a class="tsnav__li" href="#contact">İletişime Geç</a></li>
+                    </ul>
+                    <div class="tsnav__social">
+                      <a href="https://github.com/tekneenes" target="_blank" rel="noopener" aria-label="GitHub (@tekneenes)">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.92.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.38-3.88-1.38-.52-1.33-1.28-1.68-1.28-1.68-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11.05 11.05 0 0 1 5.78 0c2.2-1.49 3.16-1.18 3.16-1.18.63 1.59.24 2.76.12 3.05.74.81 1.18 1.83 1.18 3.09 0 4.41-2.7 5.38-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+                      </a>
+                      <a href="https://www.linkedin.com/in/muhammed-enes-tekne" target="_blank" rel="noopener" aria-label="LinkedIn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zM7.119 20.452H3.555V9h3.564v11.452z"/></svg>
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="tsnav__col tsnav__col--services">
+                    <p class="tsnav__eyebrow">Mimari Uzmanlık &amp; Prodüksiyon Sistemleri</p>
+                    <div class="tsnav__services-row">
+                      <div class="tsnav__groups">
+                        <div class="tsnav__group">
+                          <span class="tsnav__group-label">Mobil &amp; SaaS</span>
+                          <ul class="tsnav__group-list">
+                            <li>
+                              <a class="tsnav__link" href="#projects">
+                                <span class="tsnav__link-title">Flutter &amp; Dart Mimarisi</span>
+                                <span class="tsnav__link-blurb">60/120 FPS Offline-First iOS, Android &amp; POS sistemleri (Gastrofy, MasaTakip).</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a class="tsnav__link" href="#projects">
+                                <span class="tsnav__link-title">GastroMind &amp; GastroQR</span>
+                                <span class="tsnav__link-blurb">Gerçek zamanlı QR sipariş motoru ve B2B restoran analitik ekosistemi.</span>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+
+                        <div class="tsnav__group">
+                          <span class="tsnav__group-label">Bulut &amp; İletişim</span>
+                          <ul class="tsnav__group-list">
+                            <li>
+                              <a class="tsnav__link" href="#projects">
+                                <span class="tsnav__link-title">Omega Call (WebRTC)</span>
+                                <span class="tsnav__link-blurb">P2P şifreli ses iletişimi ve Firebase Realtime DB sinyalizasyon altyapısı.</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a class="tsnav__link" href="#expertise">
+                                <span class="tsnav__link-title">Firebase &amp; BaaS Hatları</span>
+                                <span class="tsnav__link-blurb">%99.9 SLA çalışma süresi, Zero-Trust Security Rules ve gerçek zamanlı senkronizasyon.</span>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+
+                        <div class="tsnav__group">
+                          <span class="tsnav__group-label">Grafik &amp; C++ Ar-Ge</span>
+                          <ul class="tsnav__group-list">
+                            <li>
+                              <a class="tsnav__link" href="#projects">
+                                <span class="tsnav__link-title">Stark Mark 85 WebGL</span>
+                                <span class="tsnav__link-blurb">Three.js PBR materyal işleme, GLSL shaderlar ve Web Audio telemetri motoru.</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a class="tsnav__link" href="#projects">
+                                <span class="tsnav__link-title">VRMF C++ Media Codec</span>
+                                <span class="tsnav__link-blurb">AI manipülasyon tespiti, kriptografik kaynak doğrulama ve telif takip çekirdeği.</span>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <!-- Interactive Bayer Dither Card inside Menu -->
+                      <aside class="tsnav__book">
+                        <canvas class="tsnav__book-dither" data-nav-dither width="1" height="1" aria-hidden="true" hidden></canvas>
+                        <p class="tsnav__book-title">Yeni projenizi veya mimari ihtiyaçlarınızı konuşalım. (Fareyi gezdirin)</p>
+                        <div class="tsnav__book-cta">
+                          <a class="btn-bubble-arrow" href="mailto:teknemuhammedenes58@gmail.com">
+                            <div class="btn-bubble-arrow__arrow" aria-hidden="true">
+                              <svg viewBox="0 0 24 24" class="btn-bubble-arrow__arrow-svg"><polyline points="18 8 18 18 8 18" fill="none" stroke="currentColor" stroke-width="1.5"></polyline><line x1="18" y1="18" x2="5" y2="5" fill="none" stroke="currentColor" stroke-width="1.5"></line></svg>
+                            </div>
+                            <div class="btn-bubble-arrow__content">
+                              <span class="btn-bubble-arrow__content-text">E-posta Gönder</span>
+                            </div>
+                            <div class="btn-bubble-arrow__arrow is--duplicate" aria-hidden="true">
+                              <svg viewBox="0 0 24 24" class="btn-bubble-arrow__arrow-svg"><polyline points="18 8 18 18 8 18" fill="none" stroke="currentColor" stroke-width="1.5"></polyline><line x1="18" y1="18" x2="5" y2="5" fill="none" stroke="currentColor" stroke-width="1.5"></line></svg>
+                            </div>
+                          </a>
+                        </div>
+                      </aside>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Top Right Floating CTA -->
+      <div class="tsnav__cta">
+        <a class="btn-bubble-arrow" href="https://github.com/tekneenes" target="_blank" rel="noopener">
+          <div class="btn-bubble-arrow__arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" class="btn-bubble-arrow__arrow-svg"><polyline points="18 8 18 18 8 18" fill="none" stroke="currentColor" stroke-width="1.5"></polyline><line x1="18" y1="18" x2="5" y2="5" fill="none" stroke="currentColor" stroke-width="1.5"></line></svg>
+          </div>
+          <div class="btn-bubble-arrow__content">
+            <span class="btn-bubble-arrow__content-text">github.com/tekneenes</span>
+          </div>
+          <div class="btn-bubble-arrow__arrow is--duplicate" aria-hidden="true">
+            <svg viewBox="0 0 24 24" class="btn-bubble-arrow__arrow-svg"><polyline points="18 8 18 18 8 18" fill="none" stroke="currentColor" stroke-width="1.5"></polyline><line x1="18" y1="18" x2="5" y2="5" fill="none" stroke="currentColor" stroke-width="1.5"></line></svg>
+          </div>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <!-- ======================================================================
+         HERO SECTION WITH LIVE WEBGL2 BAYER 8x8 DITHER PLANET
+         ====================================================================== -->
+    <section class="hero">
+      <div class="hero__stage" data-live-dither-host>
+        <div class="hero__art" aria-hidden="true">
+          <div class="hero__planet" data-hero-dither></div>
+        </div>
+
+        <div class="container hero__inner">
+          <div class="hero__badge">
+            <span class="hero__badge-dot" aria-hidden="true"></span>
+            <span>Senior Full-Stack &amp; Mobile Solutions Architect • İstanbul, TR</span>
+          </div>
+
+          <h1 class="hero__title">
+            Fikirden prodüksiyona: <span class="hero__title-accent">ölçeklenebilir mobil ve bulut</span> mimarileri.
+          </h1>
+
+          <p class="hero__sub">
+            <a href="#projects">Flutter &amp; Dart</a> ile yüksek performanslı çapraz platform mobil uygulamalar, <a href="#projects">React &amp; TypeScript</a> ile modern B2B SaaS arayüzleri, Firebase bulut altyapısı ve ileri seviye <a href="#expertise">WebGL / C++ Ar-Ge çözümleri</a> geliştiriyorum.
+          </p>
+        </div>
+      </div>
+
+      <div class="hero__bottom">
+        <div class="container hero__bottom-inner">
+          <!-- Overlapping Black Track Record Box (Legency signature layout with Muhammed Enes Tekne's real metrics) -->
+          <div class="hero__proof">
+            <p class="hero__proof-label">Mühendislik Sicili &amp; Metrikler</p>
+            <ul>
+              <li>
+                <strong>7+ Canlı</strong>
+                <span>Firebase &amp; Web prodüksiyon altyapısında 7/24 kesintisiz çalışan aktif SaaS ve bulut sistemi.</span>
+              </li>
+              <li>
+                <strong>18+ Repo</strong>
+                <span>GitHub (@tekneenes) üzerinde açık kaynak ve kurumsal çapraz platform yazılım mimarisi.</span>
+              </li>
+              <li>
+                <strong>%99.9 SLA</strong>
+                <span>Cloud Firestore, WebRTC ve Offline-First veri motorlarıyla yüksek erişilebilirlik standardı.</span>
+              </li>
+            </ul>
+
+            <a class="btn-bubble-arrow" href="#projects">
+              <div class="btn-bubble-arrow__arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24" class="btn-bubble-arrow__arrow-svg"><polyline points="18 8 18 18 8 18" fill="none" stroke="currentColor" stroke-width="1.5"></polyline><line x1="18" y1="18" x2="5" y2="5" fill="none" stroke="currentColor" stroke-width="1.5"></line></svg>
+              </div>
+              <div class="btn-bubble-arrow__content">
+                <span class="btn-bubble-arrow__content-text">Prodüksiyon Projelerini İncele</span>
+              </div>
+              <div class="btn-bubble-arrow__arrow is--duplicate" aria-hidden="true">
+                <svg viewBox="0 0 24 24" class="btn-bubble-arrow__arrow-svg"><polyline points="18 8 18 18 8 18" fill="none" stroke="currentColor" stroke-width="1.5"></polyline><line x1="18" y1="18" x2="5" y2="5" fill="none" stroke="currentColor" stroke-width="1.5"></line></svg>
+              </div>
+            </a>
+          </div>
+
+          <!-- Cycling Client & Production Systems Wall -->
+          <div class="hero__partners">
+            <span class="hero__partners-label">Canlı Prodüksiyon Sistemleri &amp; Açık Kaynak Ekosistemi</span>
+            <div class="logo-wall" data-logo-wall>
+              <div class="logo-wall__list">
+                <div class="logo-wall__item"><div class="logo-wall__target"><span class="dot"></span>GastroMind SaaS</div></div>
+                <div class="logo-wall__item"><div class="logo-wall__target"><span class="dot"></span>GastroQR Cloud</div></div>
+                <div class="logo-wall__item"><div class="logo-wall__target"><span class="dot"></span>Gastrofy POS</div></div>
+                <div class="logo-wall__item"><div class="logo-wall__target"><span class="dot"></span>SuperMacHub Suite</div></div>
+                <div class="logo-wall__item"><div class="logo-wall__target"><span class="dot"></span>Stark Mark 85 3D</div></div>
+                <div class="logo-wall__item"><div class="logo-wall__target"><span class="dot"></span>Omega Call WebRTC</div></div>
+                <div class="logo-wall__item"><div class="logo-wall__target"><span class="dot"></span>Kadran Ambient TV</div></div>
+                <div class="logo-wall__item"><div class="logo-wall__target"><span class="dot"></span>RingerPro School AI</div></div>
+                <div class="logo-wall__item"><div class="logo-wall__target"><span class="dot"></span>Nur İslami Yaşam</div></div>
+                <div class="logo-wall__item"><div class="logo-wall__target"><span class="dot"></span>EasyCall Dialer</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SELECTED WORK / CASE STUDIES (.cases) — MUHAMMED ENES TEKNE'S REAL PROJECTS
+         ====================================================================== -->
+    <section class="section cases" id="projects">
+      <div class="container">
+        <div class="cases__head">
+          <div>
+            <span class="label">Prodüksiyon &amp; Ar-Ge Vitrini</span>
+            <h2 class="cases__title" data-roll-heading>Seçili mimari vaka analizleri</h2>
+          </div>
+
+          <div class="cases__filters" role="group" aria-label="Proje filtreleri">
+            <button type="button" class="filter-btn is-active" data-filter-btn="all">Tümü (08)</button>
+            <button type="button" class="filter-btn" data-filter-btn="saas">İşletme SaaS &amp; Gastronomi</button>
+            <button type="button" class="filter-btn" data-filter-btn="mobile">Mobil &amp; İletişim</button>
+            <button type="button" class="filter-btn" data-filter-btn="rnd">WebGL &amp; C++ Ar-Ge</button>
+            <button type="button" class="filter-btn" data-filter-btn="web">Kurumsal Web</button>
+          </div>
+        </div>
+
+        <div class="cases__grid">
+          <!-- Case 1: GastroMind & GastroQR -->
+          <article class="case-card" data-project-cat="saas">
+            <div class="case-card__visual">
+              <div class="case-card__canvas-preview">
+                <div class="case-card__art-bg case-card__art-bg--1"></div>
+                <span class="case-card__tag-pill">CS-01 // B2B SaaS Ecosystem • 2 Canlı Platform</span>
+                <div class="case-card__mockup">
+                  <div>
+                    <strong style="display:block;font-size:1.1rem">GastroMind &amp; GastroQR Ecosystem</strong>
+                    <span style="font-size:0.82rem;opacity:0.78">Akıllı QR menü motoru, masa-mutfak senkronizasyonu ve operasyonel analitik</span>
+                  </div>
+                  <span style="color:var(--lime);font-family:var(--font-title);font-weight:700">LIVE</span>
+                </div>
+              </div>
+            </div>
+            <div class="case-card__chips">
+              <span><strong>&lt; 45ms</strong>Firestore Gerçek Zamanlı Senkronizasyon</span>
+              <span><strong>2 Platform</strong>GastroMind &amp; GastroQR Aktif Dağıtım</span>
+            </div>
+            <p class="case-card__context">Cloud Firestore olay güdümlü durum senkronizasyonu, çoklu şube/masa oturum yönetimi ve karar destek analitiği.</p>
+            <div class="case-card__bar">
+              <span class="case-card__client">GastroMind &amp; GastroQR</span>
+              <a class="btn-bubble-arrow btn-bubble-arrow--white" href="https://gastromind-144a9.web.app" target="_blank" rel="noopener">
+                <div class="btn-bubble-arrow__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" class="btn-bubble-arrow__arrow-svg"><polyline points="18 8 18 18 8 18" fill="none" stroke="currentColor" stroke-width="1.5"></polyline><line x1="18" y1="18" x2="5" y2="5" fill="none" stroke="currentColor" stroke-width="1.5"></line></svg>
+                </div>
+                <div class="btn-bubble-arrow__content">
+                  <span class="btn-bubble-arrow__content-text">Canlı Sistemi Aç</span>
+                </div>
+                <div class="btn-bubble-arrow__arrow is--duplicate" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" class="btn-bubble-arrow__arrow-svg"><polyline points="18 8 18 18 8 18" fill="none" stroke="currentColor" stroke-width="1.5"></polyline><line x1="18" y1="18" x2="5" y2="5" fill="none" stroke="currentColor" stroke-width="1.5"></line></svg>
+                </div>
+              </a>
+            </div>
+          </article>
+
+          <!-- Case 2: Gastrofy & MasaTakip -->
+          <article class="case-card" data-project-cat="saas mobile">
+            <div class="case-card__visual">
+              <div class="case-card__canvas-preview">
+                <div class="case-card__art-bg case-card__art-bg--2"></div>
+                <span class="case-card__tag-pill">CS-02 // Flutter &amp; Dart POS Architecture</span>
+                <div class="case-card__mockup">
+                  <div>
+                    <strong style="display:block;font-size:1.1rem">Gastrofy &amp; MasaTakip POS</strong>
+                    <span style="font-size:0.82rem;opacity:0.78">Çapraz platform masa, adisyon, reçete bazlı stok ve sipariş yönetim mimarisi</span>
+                  </div>
+                  <span style="color:var(--lime);font-family:var(--font-title);font-weight:700">Offline-First</span>
+                </div>
+              </div>
+            </div>
+            <div class="case-card__chips">
+              <span><strong>%100</strong>Çevrimdışı Çalışabilme (Offline-First)</span>
+              <span><strong>60/120 FPS</strong>Mobil + Masaüstü Tekil Dart Çekirdeği</span>
+            </div>
+            <p class="case-card__context">İnternet kesintilerinde bile adisyon açma, masa taşıma/bölme ve stok düşümü yapan senkronize POS mimarisi.</p>
+            <div class="case-card__bar">
+              <span class="case-card__client">Gastrofy POS</span>
+              <a class="btn-bubble-arrow btn-bubble-arrow--white" href="https://github.com/tekneenes/gastrofy" target="_blank" rel="noopener">
+                <div class="btn-bubble-arrow__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" class="btn-bubble-arrow__arrow-svg"><polyline points="18 8 18 18 8 18" fill="none" stroke="currentColor" stroke-width="1.5"></polyline><line x1="18" y1="18" x2="5" y2="5" fill="none" stroke="currentColor" stroke-width="1.5"></line></svg>
+                </div>
+                <div class="btn-bubble-arrow__content">
+                  <span class="btn-bubble-arrow__content-text">GitHub Deposu</span>
+                </div>
+                <div class="btn-bubble-arrow__arrow is--duplicate" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" class="btn-bubble-arrow__arrow-svg"><polyline points="18 8 18 18 8 18" fill="none" stroke="currentColor" stroke-width="1.5"></polyline><line x1="18" y1="18" x2="5" y2="5" fill="none" stroke="currentColor" stroke-width="1.5"></line></svg>
+                </div>
+              </a>
+            </div>
+          </article>
+
+          <!-- Case 3: Omega Call -->
+          <article class="case-card" data-project-cat="mobile">
+            <div class="case-card__visual">
+              <div class="case-card__canvas-preview">
+                <div class="case-card__art-bg case-card__art-bg--3"></div>
+                <span class="case-card__tag-pill">CS-03 // Real-Time Telecom Engine • WebRTC</span>
+                <div class="case-card__mockup">
+                  <div>
+                    <strong style="display:block;font-size:1.1rem">Omega Call</strong>
+                    <span style="font-size:0.82rem;opacity:0.78">Düşük gecikmeli P2P şifreli sesli iletişim ve çağrı yönlendirme altyapısı</span>
+                  </div>
+                  <span style="color:var(--lime);font-family:var(--font-title);font-weight:700">WebRTC P2P</span>
+                </div>
+              </div>
+            </div>
+            <div class="case-card__chips">
+              <span><strong>Sub-Second</strong>ICE/STUN/TURN Çağrı Kurulumu</span>
+              <span><strong>Opus Audio</strong>Yankı Engelleme (AEC) &amp; AGC</span>
+            </div>
+            <p class="case-card__context">Firebase Realtime Database üzerinde ultra hızlı SDP sinyalizasyon katmanı ve Flutter + Web çapraz istemci uyumu.</p>
+            <div class="case-card__bar">
+              <span class="case-card__client">Omega Call</span>
+              <a class="btn-bubble-arrow btn-bubble-arrow--white" href="https://omega-call.web.app" target="_blank" rel="noopener">
+                <div class="btn-bubble-arrow__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" class="btn-bubble-arrow__arrow-svg"><polyline points="18 8 18 18 8 18" fill="none" stroke="currentColor" stroke-width="1.5"></polyline><line x1="18" y1="18" x2="5" y2="5" fill="none" stroke="currentColor" stroke-width="1.5"></line></svg>
+                </div>
+                <div class="btn-bubble-arrow__content">
+                  <span class="btn-bubble-arrow__content-text">Canlı Uygulama</span>
+                </div>
+                <div class="btn-bubble-arrow__arrow is--duplicate" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" class="btn-bubble-arrow__arrow-svg"><polyline points="18 8 18 18 8 18" fill="none" stroke="currentColor" stroke-width="1.5"></polyline><line x1="18" y1="18" x2="5" y2="5" fill="none" stroke="currentColor" stroke-width="1.5"></line></svg>
+                </div>
+              </a>
+            </div>
+          </article>
+
+          <!-- Case 4: Stark Mark 85 WebGL 3D Scrollytelling -->
+          <article class="case-card" data-project-cat="rnd web">
+            <div class="case-card__visual">
+              <div class="case-card__canvas-preview">
+                <div class="case-card__art-bg case-card__art-bg--4"></div>
+                <span class="case-card__tag-pill">CS-04 // Three.js WebGL &amp; 4K PBR Scrollytelling</span>
+                <div class="case-card__mockup">
+                  <div>
+                    <strong style="display:block;font-size:1.1rem">Stark Mark 85 3D WebGL Deneyimi</strong>
+                    <span style="font-size:0.82rem;opacity:0.78">3D PBR Nano-Zırh scrollytelling motoru, Web Audio API osilatörleri &amp; Suit Customizer</span>
+                  </div>
+                  <span style="color:var(--lime);font-family:var(--font-title);font-weight:700">60 FPS WebGL</span>
+                </div>
+              </div>
+            </div>
+            <div class="case-card__chips">
+              <span><strong>Three.js PBR</strong>ACESFilmic Tonlama &amp; Web Audio HUD</span>
+              <span><strong>Scrollytelling</strong>Waypoint Kamera Yolculuğu &amp; 360° İnceleme</span>
+            </div>
+            <p class="case-card__context">Sıfır-framework saf Three.js ve WebGL üzerinde 4K PBR materyallerle çalışan interaktif 3D zırh vitrini ve ses motoru.</p>
+            <div class="case-card__bar">
+              <span class="case-card__client">Mark LXXXV WebGL</span>
+              <a class="btn-bubble-arrow btn-bubble-arrow--white" href="https://tekneenes.github.io/ironman-3d-animation-website/" target="_blank" rel="noopener">
+                <div class="btn-bubble-arrow__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" class="btn-bubble-arrow__arrow-svg"><polyline points="18 8 18 18 8 18" fill="none" stroke="currentColor" stroke-width="1.5"></polyline><line x1="18" y1="18" x2="5" y2="5" fill="none" stroke="currentColor" stroke-width="1.5"></line></svg>
+                </div>
+                <div class="btn-bubble-arrow__content">
+                  <span class="btn-bubble-arrow__content-text">Canlı 3D Deneyimi Aç</span>
+                </div>
+                <div class="btn-bubble-arrow__arrow is--duplicate" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" class="btn-bubble-arrow__arrow-svg"><polyline points="18 8 18 18 8 18" fill="none" stroke="currentColor" stroke-width="1.5"></polyline><line x1="18" y1="18" x2="5" y2="5" fill="none" stroke="currentColor" stroke-width="1.5"></line></svg>
+                </div>
+              </a>
+            </div>
+          </article>
+
+          <!-- Case 5: SuperMacHub -->
+          <article class="case-card" data-project-cat="rnd mobile">
+            <div class="case-card__visual">
+              <div class="case-card__canvas-preview">
+                <div class="case-card__art-bg case-card__art-bg--3"></div>
+                <span class="case-card__tag-pill">CS-05 // Native Swift 5.10 • Apple MLX &amp; SwiftUI</span>
+                <div class="case-card__mockup">
+                  <div>
+                    <strong style="display:block;font-size:1.1rem">SuperMacHub</strong>
+                    <span style="font-size:0.82rem;opacity:0.78">20+ yardımcı uygulamayı tek çatıda toplayan yerel macOS AI ve sistem paketi</span>
+                  </div>
+                  <span style="color:var(--lime);font-family:var(--font-title);font-weight:700">macOS 14+ / M1-M4</span>
+                </div>
+              </div>
+            </div>
+            <div class="case-card__chips">
+              <span><strong>Apple MLX &amp; Vision</strong>Yerel LoRA Eğitimi &amp; Eney AI Asistanı</span>
+              <span><strong>21 Modül</strong>Stats SMC, BoringNotch, MouseFix &amp; CoreAudio Tap</span>
+            </div>
+            <p class="case-card__context">Apple Silicon için optimize edilmiş, sürücüsüz ses yönlendirme ve menü çubuğu telemetrisi sunan modüler macOS süper uygulaması.</p>
+            <div class="case-card__bar">
+              <span class="case-card__client">SuperMacHub Suite</span>
+              <a class="btn-bubble-arrow btn-bubble-arrow--white" href="https://github.com/tekneenes/SuperMacHub" target="_blank" rel="noopener">
+                <div class="btn-bubble-arrow__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" class="btn-bubble-arrow__arrow-svg"><polyline points="18 8 18 18 8 18" fill="none" stroke="currentColor" stroke-width="1.5"></polyline><line x1="18" y1="18" x2="5" y2="5" fill="none" stroke="currentColor" stroke-width="1.5"></line></svg>
+                </div>
+                <div class="btn-bubble-arrow__content">
+                  <span class="btn-bubble-arrow__content-text">GitHub Deposu</span>
+                </div>
+                <div class="btn-bubble-arrow__arrow is--duplicate" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" class="btn-bubble-arrow__arrow-svg"><polyline points="18 8 18 18 8 18" fill="none" stroke="currentColor" stroke-width="1.5"></polyline><line x1="18" y1="18" x2="5" y2="5" fill="none" stroke="currentColor" stroke-width="1.5"></line></svg>
+                </div>
+              </a>
+            </div>
+          </article>
+
+          <!-- Case 6: Kadran & Kadran Timer -->
+          <article class="case-card" data-project-cat="web mobile">
+            <div class="case-card__visual">
+              <div class="case-card__canvas-preview">
+                <div class="case-card__art-bg case-card__art-bg--2"></div>
+                <span class="case-card__tag-pill">CS-06 // React 19 &amp; Android TV Daydream Screensaver</span>
+                <div class="case-card__mockup">
+                  <div>
+                    <strong style="display:block;font-size:1.1rem">Kadran &amp; Kadran Timer</strong>
+                    <span style="font-size:0.82rem;opacity:0.78">Retro 3D flip-clock zamanlayıcı, canlı piyasa takibi &amp; Android TV Daydream servisi</span>
+                  </div>
+                  <span style="color:var(--lime);font-family:var(--font-title);font-weight:700">Web &amp; Android TV</span>
+                </div>
+              </div>
+            </div>
+            <div class="case-card__chips">
+              <span><strong>React 19 &amp; Tailwind</strong>Mekanik 3D Flip Animasyonu &amp; Canlı Piyasalar</span>
+              <span><strong>DreamService</strong>D-Pad Kumandalı Çevrimdışı TV Ekran Koruyucusu</span>
+            </div>
+            <p class="case-card__context">Canlı döviz, altın ve hava durumu verileri sunan retro flip-clock web panosu ve yerel Android TV ekran koruyucu uygulaması.</p>
+            <div class="case-card__bar">
+              <span class="case-card__client">Kadran Ekosistemi</span>
+              <a class="btn-bubble-arrow btn-bubble-arrow--white" href="https://github.com/tekneenes/kadran" target="_blank" rel="noopener">
+                <div class="btn-bubble-arrow__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" class="btn-bubble-arrow__arrow-svg"><polyline points="18 8 18 18 8 18" fill="none" stroke="currentColor" stroke-width="1.5"></polyline><line x1="18" y1="18" x2="5" y2="5" fill="none" stroke="currentColor" stroke-width="1.5"></line></svg>
+                </div>
+                <div class="btn-bubble-arrow__content">
+                  <span class="btn-bubble-arrow__content-text">GitHub Deposu</span>
+                </div>
+                <div class="btn-bubble-arrow__arrow is--duplicate" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" class="btn-bubble-arrow__arrow-svg"><polyline points="18 8 18 18 8 18" fill="none" stroke="currentColor" stroke-width="1.5"></polyline><line x1="18" y1="18" x2="5" y2="5" fill="none" stroke="currentColor" stroke-width="1.5"></line></svg>
+                </div>
+              </a>
+            </div>
+          </article>
+
+          <!-- Case 5: Nur İslami Yaşam Portalı -->
+          <article class="case-card" data-project-cat="mobile web">
+            <div class="case-card__visual">
+              <div class="case-card__canvas-preview">
+                <div class="case-card__art-bg case-card__art-bg--1"></div>
+                <span class="case-card__tag-pill">CS-06 // High-Volume Content Ecosystem • App Store &amp; Web</span>
+                <div class="case-card__mockup">
+                  <div>
+                    <strong style="display:block;font-size:1.1rem">Nur İslami Yaşam &amp; Nur Vita Islamica</strong>
+                    <span style="font-size:0.82rem;opacity:0.78">Astronomik vakit algoritmaları ve otomatik içerik dağıtım hatlarına sahip ekosistem</span>
+                  </div>
+                  <span style="color:var(--lime);font-family:var(--font-title);font-weight:700">PWA &amp; iOS</span>
+                </div>
+              </div>
+            </div>
+            <div class="case-card__chips">
+              <span><strong>CDN Pipeline</strong>Otomatik JSON Veri Senkronizasyonu</span>
+              <span><strong>Offline Cache</strong>IndexedDB &amp; Konum Hesaplama Motoru</span>
+            </div>
+            <p class="case-card__context">Düşük bant genişliğinde bile anında açılan yüksek hacimli veri mimarisi, PWA ve mobil uygulama ekosistemi.</p>
+            <div class="case-card__bar">
+              <span class="case-card__client">Nur İslami Yaşam</span>
+              <a class="btn-bubble-arrow btn-bubble-arrow--white" href="https://nur-islami-yasam.web.app" target="_blank" rel="noopener">
+                <div class="btn-bubble-arrow__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" class="btn-bubble-arrow__arrow-svg"><polyline points="18 8 18 18 8 18" fill="none" stroke="currentColor" stroke-width="1.5"></polyline><line x1="18" y1="18" x2="5" y2="5" fill="none" stroke="currentColor" stroke-width="1.5"></line></svg>
+                </div>
+                <div class="btn-bubble-arrow__content">
+                  <span class="btn-bubble-arrow__content-text">Canlı Portalı Aç</span>
+                </div>
+                <div class="btn-bubble-arrow__arrow is--duplicate" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" class="btn-bubble-arrow__arrow-svg"><polyline points="18 8 18 18 8 18" fill="none" stroke="currentColor" stroke-width="1.5"></polyline><line x1="18" y1="18" x2="5" y2="5" fill="none" stroke="currentColor" stroke-width="1.5"></line></svg>
+                </div>
+              </a>
+            </div>
+          </article>
+
+          <!-- Case 6: Paylaş Gitsin & Zara Heating Cooling -->
+          <article class="case-card" data-project-cat="web">
+            <div class="case-card__visual">
+              <div class="case-card__canvas-preview">
+                <div class="case-card__art-bg case-card__art-bg--2"></div>
+                <span class="case-card__tag-pill">CS-07 &amp; 08 // C2C Marketplace &amp; Corporate Engineering</span>
+                <div class="case-card__mockup">
+                  <div>
+                    <strong style="display:block;font-size:1.1rem">Paylaş Gitsin &amp; Zara Heating Cooling</strong>
+                    <span style="font-size:0.82rem;opacity:0.78">Gerçek zamanlı C2C ilan pazar yeri ve kurumsal HVAC mühendislik platformu</span>
+                  </div>
+                  <span style="color:var(--lime);font-family:var(--font-title);font-weight:700">2 Canlı Site</span>
+                </div>
+              </div>
+            </div>
+            <div class="case-card__chips">
+              <span><strong>Paylaş Gitsin</strong>İstemci Görsel Sıkıştırma &amp; Anlık Arama</span>
+              <span><strong>Zara HVAC</strong>Küresel CDN &amp; Kurumsal Teknik SEO</span>
+            </div>
+            <p class="case-card__context">Hızlı medya yükleme boru hatları, dinamik filtreleme ve kurumsal dönüşüm odaklı web prodüksiyonları.</p>
+            <div class="case-card__bar">
+              <span class="case-card__client">Paylaş Gitsin</span>
+              <a class="btn-bubble-arrow btn-bubble-arrow--white" href="https://paylas-gitsin.web.app" target="_blank" rel="noopener">
+                <div class="btn-bubble-arrow__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" class="btn-bubble-arrow__arrow-svg"><polyline points="18 8 18 18 8 18" fill="none" stroke="currentColor" stroke-width="1.5"></polyline><line x1="18" y1="18" x2="5" y2="5" fill="none" stroke="currentColor" stroke-width="1.5"></line></svg>
+                </div>
+                <div class="btn-bubble-arrow__content">
+                  <span class="btn-bubble-arrow__content-text">Canlı Pazar Yeri</span>
+                </div>
+                <div class="btn-bubble-arrow__arrow is--duplicate" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" class="btn-bubble-arrow__arrow-svg"><polyline points="18 8 18 18 8 18" fill="none" stroke="currentColor" stroke-width="1.5"></polyline><line x1="18" y1="18" x2="5" y2="5" fill="none" stroke="currentColor" stroke-width="1.5"></line></svg>
+                </div>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         CURVED SVG ARC MARQUEE (.arc)
+         ====================================================================== -->
+    <section class="arc" aria-hidden="true">
+      <svg viewBox="0 0 1728 280" preserveAspectRatio="xMidYMid slice">
+        <path id="arc-path" d="M -200,310 Q 864,-30 1928,310" fill="none"></path>
+        <text>
+          <textPath href="#arc-path" data-arc-marquee data-arc-unit="Flutter &amp; Dart • React &amp; TypeScript • Firebase Cloud • Three.js WebGL &amp; C++ — ">
+            Flutter &amp; Dart • React &amp; TypeScript • Firebase Cloud • Three.js WebGL &amp; C++ —
+          </textPath>
+        </text>
+      </svg>
+    </section>
+
+    <!-- ======================================================================
+         CORE COMPETENCIES / ARCHITECTURAL DOMAINS (.tiers)
+         ====================================================================== -->
+    <section class="section tiers" id="services">
+      <div class="container">
+        <div class="tiers__head">
+          <span class="label">Mimari Uzmanlık Alanları</span>
+          <h2 class="tiers__title" data-roll-heading>Uçtan uca ürün ve sistem mühendisliği</h2>
+          <p class="tiers__intro">
+            Mobil uçbirimden bulut veritabanına, gerçek zamanlı WebRTC iletişiminden donanım hızlandırmalı 3D WebGL ve C++ çekirdek modüllerine kadar tam kapsamlı mimari.
+          </p>
+        </div>
+
+        <div class="tiers__grid">
+          <!-- Competency 1: Mobile Engineering -->
+          <article class="tier">
+            <div class="tier__head">
+              <span class="tier__chip">ARCH // 01</span>
+              <span class="tier__price">60/120 FPS Native</span>
+            </div>
+            <h3 class="tier__title">Kurumsal Mobil Mühendislik (Flutter &amp; Native)</h3>
+            <div class="tier__body">
+              <p class="tier__lead">Mimari Sütunlar:</p>
+              <ul class="tier__list">
+                <li>
+                  <span class="icon-chip icon-chip--bare" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </span>
+                  Flutter &amp; Dart ile iOS, Android ve Masaüstü tekil kod tabanı
+                </li>
+                <li>
+                  <span class="icon-chip icon-chip--bare" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </span>
+                  Native iOS (Swift) &amp; Android (Kotlin) MethodChannel / FFI köprüleri
+                </li>
+                <li>
+                  <span class="icon-chip icon-chip--bare" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </span>
+                  Offline-First yerel veritabanı ve otomatik mutabakat (reconciliation)
+                </li>
+                <li>
+                  <span class="icon-chip icon-chip--bare" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </span>
+                  App Store &amp; Google Play kurumsal CI/CD ve bellek optimizasyonu
+                </li>
+              </ul>
+              <p class="tier__note">Gastrofy POS, MasaTakip, Ringer Pro ve Easy Call projelerinin temel omurgası.</p>
+              <div class="tier__cta">
+                <a class="btn-bubble-arrow btn-bubble-arrow--black" href="https://github.com/tekneenes" target="_blank" rel="noopener">
+                  <div class="btn-bubble-arrow__arrow" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" class="btn-bubble-arrow__arrow-svg"><polyline points="18 8 18 18 8 18" fill="none" stroke="currentColor" stroke-width="1.5"></polyline><line x1="18" y1="18" x2="5" y2="5" fill="none" stroke="currentColor" stroke-width="1.5"></line></svg>
+                  </div>
+                  <div class="btn-bubble-arrow__content">
+                    <span class="btn-bubble-arrow__content-text">Mobil Repoları Gör</span>
+                  </div>
+                  <div class="btn-bubble-arrow__arrow is--duplicate" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" class="btn-bubble-arrow__arrow-svg"><polyline points="18 8 18 18 8 18" fill="none" stroke="currentColor" stroke-width="1.5"></polyline><line x1="18" y1="18" x2="5" y2="5" fill="none" stroke="currentColor" stroke-width="1.5"></line></svg>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Competency 2: Modern Web, SaaS & Cloud BaaS -->
+          <article class="tier">
+            <div class="tier__head">
+              <span class="tier__chip">ARCH // 02 &amp; 03</span>
+              <span class="tier__price">&lt; 45ms Sync</span>
+            </div>
+            <h3 class="tier__title">Modern Web, B2B SaaS &amp; Firebase Bulut Altyapısı</h3>
+            <div class="tier__body">
+              <p class="tier__lead">Mimari Sütunlar:</p>
+              <ul class="tier__list">
+                <li>
+                  <span class="icon-chip icon-chip--bare" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </span>
+                  Strict TypeScript, React 18 ve Vite ile çok kiracılı (multi-tenant) SaaS
+                </li>
+                <li>
+                  <span class="icon-chip icon-chip--bare" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </span>
+                  Cloud Firestore &amp; Realtime DB ile milisaniyelik durum senkronizasyonu
+                </li>
+                <li>
+                  <span class="icon-chip icon-chip--bare" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </span>
+                  Zero-Trust Security Rules, Cloud Functions ve WebRTC sinyalizasyon
+                </li>
+                <li>
+                  <span class="icon-chip icon-chip--bare" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </span>
+                  95+ Lighthouse Performans, WCAG Erişilebilirlik ve Teknik SEO
+                </li>
+              </ul>
+              <p class="tier__note">GastroMind, GastroQR, Omega Call ve Erkol Matbaa platformlarında aktif.</p>
+              <div class="tier__cta">
+                <a class="btn-bubble-arrow btn-bubble-arrow--black" href="https://gastromind-144a9.web.app" target="_blank" rel="noopener">
+                  <div class="btn-bubble-arrow__arrow" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" class="btn-bubble-arrow__arrow-svg"><polyline points="18 8 18 18 8 18" fill="none" stroke="currentColor" stroke-width="1.5"></polyline><line x1="18" y1="18" x2="5" y2="5" fill="none" stroke="currentColor" stroke-width="1.5"></line></svg>
+                  </div>
+                  <div class="btn-bubble-arrow__content">
+                    <span class="btn-bubble-arrow__content-text">Canlı SaaS Örneği</span>
+                  </div>
+                  <div class="btn-bubble-arrow__arrow is--duplicate" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" class="btn-bubble-arrow__arrow-svg"><polyline points="18 8 18 18 8 18" fill="none" stroke="currentColor" stroke-width="1.5"></polyline><line x1="18" y1="18" x2="5" y2="5" fill="none" stroke="currentColor" stroke-width="1.5"></line></svg>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Competency 3: Graphics, WebGL & C++ R&D (Dark Card) -->
+          <article class="tier tier--dark">
+            <div class="tier__head">
+              <span class="tier__chip">ARCH // 04</span>
+              <span class="tier__price">WebGL &amp; C++ Core</span>
+            </div>
+            <h3 class="tier__title">Grafik Mühendisliği, 3D WebGL &amp; C++ Medya Ar-Ge</h3>
+            <div class="tier__body">
+              <p class="tier__lead">İleri Seviye Ar-Ge Yetkinlikleri:</p>
+              <ul class="tier__list">
+                <li>
+                  <span class="icon-chip icon-chip--bare" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </span>
+                  Three.js, WebGL2 &amp; özel GLSL shaderlar (PBR &amp; Bayer Dither)
+                </li>
+                <li>
+                  <span class="icon-chip icon-chip--bare" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </span>
+                  VRMF (Verified Robust Media Format) C++ ikili medya ayrıştırıcı
+                </li>
+                <li>
+                  <span class="icon-chip icon-chip--bare" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </span>
+                  Kriptografik kaynak doğrulama, deepfake/AI manipülasyon tespiti
+                </li>
+                <li>
+                  <span class="icon-chip icon-chip--bare" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </span>
+                  Prosedürel Web Audio API sentezleyicileri ve sıfır-bağımlılıklı motorlar
+                </li>
+              </ul>
+              <p class="tier__note">Stark Mark 85 Interactive Nano-Suit ve VRMF C++ projeleriyle kanıtlanmış performans.</p>
+              <div class="tier__cta">
+                <a class="btn-bubble-arrow" href="#contact">
+                  <div class="btn-bubble-arrow__arrow" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" class="btn-bubble-arrow__arrow-svg"><polyline points="18 8 18 18 8 18" fill="none" stroke="currentColor" stroke-width="1.5"></polyline><line x1="18" y1="18" x2="5" y2="5" fill="none" stroke="currentColor" stroke-width="1.5"></line></svg>
+                  </div>
+                  <div class="btn-bubble-arrow__content">
+                    <span class="btn-bubble-arrow__content-text">İş Birliği İçin Ulaşın</span>
+                  </div>
+                  <div class="btn-bubble-arrow__arrow is--duplicate" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" class="btn-bubble-arrow__arrow-svg"><polyline points="18 8 18 18 8 18" fill="none" stroke="currentColor" stroke-width="1.5"></polyline><line x1="18" y1="18" x2="5" y2="5" fill="none" stroke="currentColor" stroke-width="1.5"></line></svg>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         ENGINEERING PRINCIPLES (.team)
+         ====================================================================== -->
+    <section class="section team" id="process">
+      <div class="container team__inner">
+        <span class="label">Mühendislik Standartları</span>
+        <h2 class="team__title" data-roll-heading>SLA odaklı, kesintisiz prodüksiyon prensipleri</h2>
+
+        <div class="team__grid">
+          <article class="sys-card">
+            <span class="icon-chip" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 14.5a2.5 2.5 0 0 1-2.5 2.5H9l-4 3.5V6.5A2.5 2.5 0 0 1 7.5 4h10A2.5 2.5 0 0 1 20 6.5Z"></path>
+                <path d="M8.75 9.25h6.5"></path>
+                <path d="M8.75 12.25h4"></path>
+              </svg>
+            </span>
+            <h3>SLA-01 // Production-First Mühendislik</h3>
+            <p>Sadece demo veya prototip değil; gerçek kullanıcı trafiği altında 7/24 çalışan, izlenebilir ve ölçeklenebilir 7+ canlı prodüksiyon sistemi.</p>
+          </article>
+
+          <article class="sys-card">
+            <span class="icon-chip" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3.25 4.75 6.1v5.4c0 4.2 2.9 7.6 7.25 9.25 4.35-1.65 7.25-5.05 7.25-9.25V6.1Z"></path>
+                <path d="m9 12.1 2.15 2.15L15.3 10.1"></path>
+              </svg>
+            </span>
+            <h3>SLA-02 // Offline-First Dayanıklılık</h3>
+            <p>Saha ve restoran POS operasyonlarında ağ bağlantısı kopsa bile veri kaybı yaşatmayan yerel önbellek, işlem kuyruğu ve otomatik çakışma çözümleme mimarisi.</p>
+          </article>
+
+          <article class="sys-card">
+            <span class="icon-chip" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4.5 4v14.25a1.25 1.25 0 0 0 1.25 1.25H20"></path>
+                <path d="m8 15.25 3.5-3.9 2.6 2.3 4.4-5.15"></path>
+                <path d="M15.3 8.5h3.2v3.2"></path>
+              </svg>
+            </span>
+            <h3>SLA-03 // Strict Type-Safety &amp; Performans</h3>
+            <p>Dart, TypeScript ve Modern C++'ın katı tip sistemleriyle çalışma zamanı hatalarını derleme aşamasında engelleyen, 95+ Lighthouse skorlu temiz kod tabanı.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         PIXELATED SCROLL REVEAL + 3-TIER ARCHITECTURE SHOWCASE (.separates)
+         ====================================================================== -->
+    <section class="separates" id="expertise">
+      <div class="pixelated-scroll-transition" data-pixelated-scroll-transition aria-hidden="true"></div>
+
+      <div class="container">
+        <span class="label label--on-dark">Sistem Mimarisi</span>
+        <h2 class="separates__title" data-roll-heading>İstemciden çekirdeğe 3 katmanlı teknoloji yığını</h2>
+
+        <div class="separates__tabs" role="tablist" aria-label="Mimari Katmanlar">
+          <button type="button" class="separates__tab is-active" data-feature-tab="0">Katman 01. İstemci &amp; Deneyim</button>
+          <button type="button" class="separates__tab" data-feature-tab="1">Katman 02. Senkronizasyon &amp; Protokol</button>
+          <button type="button" class="separates__tab" data-feature-tab="2">Katman 03. Bulut &amp; C++ Çekirdek</button>
+        </div>
+
+        <div class="separates__panel">
+          <div class="separates__text-col">
+            <div class="separates__items">
+              <div class="separates__item is-active" data-feature-item>
+                <span class="separates__num">KATMAN 01</span>
+                <h3>Çapraz Platform Mobil, Modern Web &amp; 3D Görselleştirme</h3>
+                <p>Son kullanıcının ve kurumsal operatörlerin doğrudan temas ettiği, Flutter &amp; Dart, React 18, TypeScript ve Three.js WebGL ile 60/120 FPS akıcılıkta tasarlanan uçbirim katmanı.</p>
+              </div>
+
+              <div class="separates__item" data-feature-item>
+                <span class="separates__num">KATMAN 02</span>
+                <h3>Gerçek Zamanlı Durum Yönetimi, WebRTC &amp; Offline-First</h3>
+                <p>İstemci ile bulut arasındaki veri tutarlılığını ağ kesintilerinde dahi koruyan Offline-First veri motoru, P2P şifreli WebRTC ses kanalları ve milisaniyelik masa/adisyon senkronizasyonu.</p>
+              </div>
+
+              <div class="separates__item" data-feature-item>
+                <span class="separates__num">KATMAN 03</span>
+                <h3>Firebase Prodüksiyon Hatları, Güvenlik Kuralları &amp; C++</h3>
+                <p>%99.9 SLA yüksek erişilebilirlik, Zero-Trust Firestore Security Rules, küresel CDN dağıtımı ve düşük seviyeli VRMF C++ kriptografik medya doğrulama çekirdeği.</p>
+              </div>
+            </div>
+
+            <div class="separates__progress" aria-hidden="true">
+              <span data-feature-progress style="transform: scaleX(0.333)"></span>
+            </div>
+          </div>
+
+          <div class="separates__visuals">
+            <!-- Visual 1 -->
+            <div class="separates__visual is-active" data-feature-visual>
+              <div class="case-card__art-bg case-card__art-bg--1"></div>
+              <span class="case-card__tag-pill">CLIENT &amp; EXPERIENCE LAYER</span>
+              <div class="case-card__mockup">
+                <code>Flutter • Dart • React 18 • TypeScript • Three.js WebGL</code>
+              </div>
+            </div>
+
+            <!-- Visual 2 -->
+            <div class="separates__visual" data-feature-visual>
+              <div class="case-card__art-bg case-card__art-bg--2"></div>
+              <span class="case-card__tag-pill">SYNC &amp; PROTOCOL LAYER</span>
+              <div class="case-card__mockup">
+                <code>Offline-First Engine • WebRTC P2P • Real-Time State Sync</code>
+              </div>
+            </div>
+
+            <!-- Visual 3 -->
+            <div class="separates__visual" data-feature-visual>
+              <div class="case-card__art-bg case-card__art-bg--4"></div>
+              <span class="case-card__tag-pill">CLOUD &amp; CORE R&amp;D LAYER</span>
+              <div class="case-card__mockup">
+                <code>Cloud Firestore • Zero-Trust Rules • C++ VRMF Codec</code>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         PRODUCTION HIGHLIGHTS SLIDER (.quote)
+         ====================================================================== -->
+    <section class="quote">
+      <div class="container">
+        <div class="quote__head">
+          <div>
+            <span class="label label--on-dark">Canlı Prodüksiyon Vurguları</span>
+            <h2 class="quote__title" data-roll-heading>Mimari problem çözümü ve etki</h2>
+          </div>
+        </div>
+
+        <div class="quote__slider">
+          <div class="quote__controls">
+            <button type="button" class="quote__arrow" data-testimonial-prev aria-label="Önceki vurgu">&larr;</button>
+            <button type="button" class="quote__arrow" data-testimonial-next aria-label="Sonraki vurgu">&rarr;</button>
+          </div>
+
+          <div class="quote__stage">
+            <span class="quote__counter"><span data-testimonial-current>1</span> / 3</span>
+            <div class="quote__list">
+              <div class="quote__card is--active" data-testimonial-card>
+                <blockquote>
+                  &ldquo;GastroMind ve GastroQR ile restoranlarda garson-mutfak-kasa arasındaki sipariş akışını Cloud Firestore üzerinde milisaniyelik gerçek zamanlı senkronizasyona taşıdık.&rdquo;
+                </blockquote>
+                <p class="quote__source">CS-01 // GastroMind &amp; GastroQR B2B SaaS Ekosistemi — Aktif Prodüksiyon</p>
+              </div>
+
+              <div class="quote__card" data-testimonial-card>
+                <blockquote>
+                  &ldquo;Yoğun servis saatlerinde internet kesilse bile Gastrofy POS'un Offline-First Dart çekirdeği adisyon ve stok işlemlerini sıfır veri kaybıyla sürdürüp bağlantı geldiğinde otomatik mutabakat yapar.&rdquo;
+                </blockquote>
+                <p class="quote__source">CS-02 // Gastrofy &amp; MasaTakip — Çapraz Platform POS Mimarisi</p>
+              </div>
+
+              <div class="quote__card" data-testimonial-card>
+                <blockquote>
+                  &ldquo;Sentetik medya ve deepfake çağında EXIF silinmesine karşı savunmasız kalan içerikler için C++ ile kriptografik kaynak doğrulama yapan VRMF protokolünü geliştirdik.&rdquo;
+                </blockquote>
+                <p class="quote__source">CS-05 // VRMF (Verified Robust Media Format) — C++ Güvenlik &amp; Medya Ar-Ge</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         INSIGHTS / ENGINEERING NOTES (.blogteaser)
+         ====================================================================== -->
+    <section class="section blogteaser" id="insights">
+      <div class="container">
+        <span class="label">Mühendislik Notları</span>
+        <h2 class="blogteaser__title" data-roll-heading>Mimari makaleler ve Ar-Ge incelemeleri</h2>
+
+        <div class="blogteaser__grid">
+          <article class="post-card">
+            <div class="post-card__media">
+              <div class="post-card__dither-art"></div>
+              <span class="post-card__media-title">Offline-First Flutter POS</span>
+            </div>
+            <div class="post-card__meta">
+              <span class="post-card__tag">Flutter &amp; Dart</span>
+              <span>Ekim 2026</span>
+            </div>
+            <h3>Gastrofy Vaka Analizi: Restoran POS Sistemlerinde Offline-First Mutabakat Mimarisi</h3>
+            <a class="post-card__link" data-underline-link href="https://github.com/tekneenes/gastrofy" target="_blank" rel="noopener">GitHub üzerinde incele &rarr;</a>
+          </article>
+
+          <article class="post-card">
+            <div class="post-card__media">
+              <div class="post-card__dither-art"></div>
+              <span class="post-card__media-title">WebRTC &amp; Firebase Signaling</span>
+            </div>
+            <div class="post-card__meta">
+              <span class="post-card__tag" data-tag="design">WebRTC</span>
+              <span>Ekim 2026</span>
+            </div>
+            <h3>Omega Call: Firebase Realtime DB ile Sub-Second ICE/SDP Sinyalizasyon Katmanı</h3>
+            <a class="post-card__link" data-underline-link href="https://omega-call.web.app" target="_blank" rel="noopener">Canlı sistemi incele &rarr;</a>
+          </article>
+
+          <article class="post-card">
+            <div class="post-card__media">
+              <div class="post-card__dither-art"></div>
+              <span class="post-card__media-title">VRMF C++ Media Codec</span>
+            </div>
+            <div class="post-card__meta">
+              <span class="post-card__tag">C++ &amp; WebGL</span>
+              <span>Eylül 2026</span>
+            </div>
+            <h3>Yapay Zekâ Manipülasyon Tespiti ve Dijital Telif Takibi İçin Binary Konteyner Tasarımı</h3>
+            <a class="post-card__link" data-underline-link href="https://github.com/tekneenes" target="_blank" rel="noopener">Ar-Ge notlarını oku &rarr;</a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       CLOSER SECTION (WEBGL DITHERED WAVE + SPINNING RING) & BLUE FOOTER
+       ======================================================================== -->
+  <footer class="site-footer" id="contact">
+    <section class="closer">
+      <div class="closer__scene" aria-hidden="true">
+        <canvas class="closer__wave" data-dithered-wave></canvas>
+      </div>
+
+      <svg class="closer__ring" viewBox="0 0 1200 1200" aria-hidden="true">
+        <g class="closer__ring-spin">
+          <defs>
+            <path id="ring-path" d="M 600,600 m -520,0 a 520,520 0 1,1 1040,0 a 520,520 0 1,1 -1040,0"></path>
+          </defs>
+          <text>
+            <textPath href="#ring-path" textLength="3267" lengthAdjust="spacing">
+              Muhammed Enes Tekne - İletişime Geçin - Muhammed Enes Tekne - İletişime Geçin -
+            </textPath>
+          </text>
+        </g>
+      </svg>
+
+      <div class="closer__content">
+        <div class="closer__mark">MET</div>
+        <h2 class="closer__title">Sıradaki projenizi birlikte inşa edelim.</h2>
+        <p class="closer__copy">
+          Kurumsal mobil uygulama (Flutter), B2B SaaS platformu (React &amp; Firebase) veya özel WebGL / C++ mühendislik ihtiyaçlarınız için doğrudan ulaşabilirsiniz.
+        </p>
+
+        <a class="btn-bubble-arrow btn-bubble-arrow--white" href="mailto:teknemuhammedenes58@gmail.com">
+          <div class="btn-bubble-arrow__arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" class="btn-bubble-arrow__arrow-svg"><polyline points="18 8 18 18 8 18" fill="none" stroke="currentColor" stroke-width="1.5"></polyline><line x1="18" y1="18" x2="5" y2="5" fill="none" stroke="currentColor" stroke-width="1.5"></line></svg>
+          </div>
+          <div class="btn-bubble-arrow__content">
+            <span class="btn-bubble-arrow__content-text">teknemuhammedenes58@gmail.com</span>
+          </div>
+          <div class="btn-bubble-arrow__arrow is--duplicate" aria-hidden="true">
+            <svg viewBox="0 0 24 24" class="btn-bubble-arrow__arrow-svg"><polyline points="18 8 18 18 8 18" fill="none" stroke="currentColor" stroke-width="1.5"></polyline><line x1="18" y1="18" x2="5" y2="5" fill="none" stroke="currentColor" stroke-width="1.5"></line></svg>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="footer">
+      <div class="container footer__grid">
+        <div class="footer__brand">
+          <a class="footer__brand-title" href="#top">MUHAMMED ENES TEKNE</a>
+          <p style="margin-top:0.75rem;opacity:0.88;max-width:36ch">
+            Senior Full-Stack &amp; Mobile Solutions Architect — Flutter, React, TypeScript, Firebase &amp; C++/WebGL.
+          </p>
+          <div class="footer__award">
+            <span>★ 7+ Canlı Prodüksiyon Sistemi • 18+ GitHub Deposu</span>
+          </div>
+        </div>
+
+        <div class="footer__col">
+          <h3>Canlı Sistemler</h3>
+          <ul>
+            <li><a href="https://gastromind-144a9.web.app" target="_blank" rel="noopener">GastroMind SaaS</a></li>
+            <li><a href="https://gastroqr-5dcdb.web.app" target="_blank" rel="noopener">GastroQR Platform</a></li>
+            <li><a href="https://omega-call.web.app" target="_blank" rel="noopener">Omega Call WebRTC</a></li>
+            <li><a href="https://nur-islami-yasam.web.app" target="_blank" rel="noopener">Nur İslami Yaşam</a></li>
+            <li><a href="https://paylas-gitsin.web.app" target="_blank" rel="noopener">Paylaş Gitsin</a></li>
+            <li><a href="https://zara-heating-cooling.web.app" target="_blank" rel="noopener">Zara Heating Cooling</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h3>Açık Kaynak &amp; Ar-Ge</h3>
+          <ul>
+            <li><a href="https://github.com/tekneenes/gastrofy" target="_blank" rel="noopener">Gastrofy &amp; MasaTakip POS</a></li>
+            <li><a href="https://github.com/tekneenes" target="_blank" rel="noopener">Stark Mark 85 WebGL</a></li>
+            <li><a href="https://github.com/tekneenes" target="_blank" rel="noopener">VRMF C++ Media Codec</a></li>
+            <li><a href="https://github.com/tekneenes" target="_blank" rel="noopener">Ringer Pro &amp; Easy Call</a></li>
+            <li><a href="https://github.com/tekneenes" target="_blank" rel="noopener">Erkol Matbaa React</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h3>Gezinti</h3>
+          <ul>
+            <li><a href="#projects">Vaka Analizleri</a></li>
+            <li><a href="#services">Yetkinlik Alanları</a></li>
+            <li><a href="#expertise">3 Katmanlı Mimari</a></li>
+            <li><a href="#process">SLA Prensipleri</a></li>
+            <li><a href="#insights">Teknik Makaleler</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h3>Profiller &amp; Tema</h3>
+          <ul>
+            <li><button type="button" data-theme-toggle style="text-decoration:underline;color:var(--lime)">Açık / Koyu Temayı Değiştir</button></li>
+            <li><a href="https://github.com/tekneenes" target="_blank" rel="noopener">GitHub (@tekneenes)</a></li>
+            <li><a href="https://www.linkedin.com/in/muhammed-enes-tekne" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://tekneenes.github.io" target="_blank" rel="noopener">tekneenes.github.io</a></li>
+            <li><a href="mailto:teknemuhammedenes58@gmail.com">E-posta Gönder</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="container footer__bottom">
+        <span>&copy; 2026 Muhammed Enes Tekne — Senior Full-Stack &amp; Mobile Solutions Architect</span>
+        <span>İstanbul / Türkiye • github.com/tekneenes</span>
+      </div>
+    </section>
+  </footer>
+
+  <!-- GSAP + ScrollTrigger for smooth scroll animations -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
