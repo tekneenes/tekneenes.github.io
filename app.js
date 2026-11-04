@@ -309,9 +309,10 @@
         vec2 screenUv = p / u_res;
         float screenAspect = u_res.x / u_res.y;
 
-        // Position portrait on right half on desktop (0.68, 0.48), centered on mobile
-        vec2 targetCenter = (screenAspect > 1.05) ? vec2(0.68, 0.48) : vec2(0.50, 0.52);
-        float scaleFactor = (screenAspect > 1.05) ? 0.92 : 0.82;
+        // Position portrait on right half on desktop (0.68, 0.34), centered on mobile (0.50, 0.38)
+        // Scaled up (+25%) and tucked cleanly underneath the bottom logo-wall cards
+        vec2 targetCenter = (screenAspect > 1.05) ? vec2(0.68, 0.34) : vec2(0.50, 0.38);
+        float scaleFactor = (screenAspect > 1.05) ? 1.18 : 1.08;
 
         vec2 rel = screenUv - targetCenter;
         rel.x *= screenAspect;
@@ -344,6 +345,10 @@
         float lum = dot(portraitSample.rgb, vec3(0.299, 0.587, 0.114));
         float alpha = portraitSample.a;
 
+        // Smooth boundary falloff to guarantee absolute zero cutoff on edges
+        float edgeFade = smoothstep(0.0, 0.04, texUv.x) * smoothstep(1.0, 0.96, texUv.x) * smoothstep(1.0, 0.92, texUv.y);
+        alpha *= edgeFade;
+
         // Contrast & Depth: 1.25
         lum = pow(clamp(lum * 1.08, 0.0, 1.0), u_contrast);
 
@@ -351,10 +356,11 @@
         float mouseLight = clamp(1.0 - mouseDist * 1.8, 0.0, 1.0);
         lum += mouseLight * 0.22 * alpha;
 
-        // Outer ambient dither halo around silhouette
+        // Outer ambient dither halo around silhouette (faded near bottom cards)
         float radiusToBody = length(rel);
-        float halo = smoothstep(0.48, 0.26, radiusToBody) * (1.0 - alpha) * 0.28;
-        halo += 0.08 * sin(radiusToBody * 24.0 - u_time * 2.5 + sin(rel.x * 6.0)) * smoothstep(0.52, 0.30, radiusToBody);
+        float bottomMask = smoothstep(-0.45, -0.15, rel.y);
+        float halo = smoothstep(0.48, 0.26, radiusToBody) * (1.0 - alpha) * 0.28 * bottomMask;
+        halo += 0.08 * sin(radiusToBody * 24.0 - u_time * 2.5 + sin(rel.x * 6.0)) * smoothstep(0.52, 0.30, radiusToBody) * bottomMask;
 
         float totalLum = clamp(lum * alpha + halo + wave * 0.12, 0.0, 1.0);
 
@@ -457,7 +463,7 @@
     window.addEventListener("resize", resize);
     resize();
 
-    let cur = { x: canvas.width * 0.68, y: canvas.height * 0.48 };
+    let cur = { x: canvas.width * 0.68, y: canvas.height * 0.34 };
     let tgt = { ...cur };
     let ripple = 0.3;
     let tgtRipple = 0.3;
