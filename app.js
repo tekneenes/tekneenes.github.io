@@ -251,7 +251,7 @@
   }
 
   /* --------------------------------------------------------------------------
-     4. WEBGL2 HERO BAYER 8x8 DITHER PLANET (Theme-Reactive!)
+     4. WEBGL2 HERO BAYER 8x8 DITHER PORTRAIT (Theme-Reactive & Mouse-Interactive)
      -------------------------------------------------------------------------- */
   function initHeroPlanetDither() {
     const container = document.querySelector("[data-hero-dither]");
@@ -280,7 +280,8 @@
       uniform vec3 u_bg;
       uniform vec3 u_mid;
       uniform vec3 u_hi;
-      uniform float u_isLight;
+      uniform float u_contrast;
+      uniform sampler2D u_portrait;
       out vec4 fragColor;
 
       const float BAYER[64] = float[64](
@@ -304,28 +305,66 @@
         float px = max(u_px, 1.0);
         vec2 cell = floor(gl_FragCoord.xy / px);
         vec2 p = cell * px + 0.5 * px;
-        vec2 q = (p - vec2(0.68, 0.52) * u_res) / u_res.y;
-        vec2 m = (u_pointer - vec2(0.68, 0.52) * u_res) / u_res.y;
 
-        float d = length(q - m);
-        float wave = u_ripple * 0.55 * sin(d * 18.0 - u_time * 3.4) * exp(-d * 2.4);
+        vec2 screenUv = p / u_res;
+        float screenAspect = u_res.x / u_res.y;
 
-        // Procedural 3D Orbital Sphere + Atmospheric Rings
-        float r = length(q);
-        float sphere = smoothstep(0.46, 0.08, r + wave * 0.04);
-        float angle = atan(q.y, q.x);
-        float swirl = sin(r * 14.0 - u_time * 0.9 + sin(angle * 3.0 + u_time * 0.4)) * 0.5 + 0.5;
-        float ring = smoothstep(0.09, 0.0, abs(length(q * vec2(0.75, 1.85)) - 0.36 + wave * 0.03));
+        // Position portrait on right half on desktop (0.68, 0.48), centered on mobile
+        vec2 targetCenter = (screenAspect > 1.05) ? vec2(0.68, 0.48) : vec2(0.50, 0.52);
+        float scaleFactor = (screenAspect > 1.05) ? 0.92 : 0.82;
 
-        // Directional light on sphere
-        vec2 lightDir = normalize(vec2(-0.6, 0.5));
-        float rim = clamp(dot(normalize(q + 0.0001), lightDir) * 0.5 + 0.5, 0.0, 1.0);
+        vec2 rel = screenUv - targetCenter;
+        rel.x *= screenAspect;
 
-        float lum = clamp(sphere * (0.45 + 0.55 * rim * swirl) + ring * 0.65 + wave * 0.16, 0.0, 1.0);
+        vec2 mouseRel = (u_pointer / u_res) - targetCenter;
+        mouseRel.x *= screenAspect;
 
+        // Interactive mouse ripple & liquid displacement (0.45 power)
+        float mouseDist = length(rel - mouseRel);
+        float wave = u_ripple * 0.035 * sin(mouseDist * 22.0 - u_time * 4.2) * exp(-mouseDist * 2.8);
+
+        vec2 warpDir = normalize((rel - mouseRel) + 0.0001);
+        vec2 warpedRel = rel + warpDir * wave;
+
+        // Subtle natural float
+        warpedRel.y += sin(u_time * 0.85) * 0.008;
+
+        // Map warped relative coordinates into [0, 1] texture coordinates
+        vec2 texUv;
+        texUv.x = (warpedRel.x / scaleFactor) + 0.5;
+        texUv.y = (warpedRel.y / scaleFactor) + 0.5;
+        texUv.y = 1.0 - texUv.y; // Flip Y for OpenGL texture coordinates
+
+        vec4 portraitSample = vec4(0.0);
+        if (texUv.x >= 0.0 && texUv.x <= 1.0 && texUv.y >= 0.0 && texUv.y <= 1.0) {
+          portraitSample = texture(u_portrait, texUv);
+        }
+
+        // Calculate luminance from portrait
+        float lum = dot(portraitSample.rgb, vec3(0.299, 0.587, 0.114));
+        float alpha = portraitSample.a;
+
+        // Contrast & Depth: 1.25
+        lum = pow(clamp(lum * 1.08, 0.0, 1.0), u_contrast);
+
+        // Interactive mouse spotlight reveal
+        float mouseLight = clamp(1.0 - mouseDist * 1.8, 0.0, 1.0);
+        lum += mouseLight * 0.22 * alpha;
+
+        // Outer ambient dither halo around silhouette
+        float radiusToBody = length(rel);
+        float halo = smoothstep(0.48, 0.26, radiusToBody) * (1.0 - alpha) * 0.28;
+        halo += 0.08 * sin(radiusToBody * 24.0 - u_time * 2.5 + sin(rel.x * 6.0)) * smoothstep(0.52, 0.30, radiusToBody);
+
+        float totalLum = clamp(lum * alpha + halo + wave * 0.12, 0.0, 1.0);
+
+        // Bayer 8x8 Ordered Dithering Thresholding
         float b = bayer8(cell);
-        vec3 col = mix(u_bg, u_mid, 1.0 - step(clamp(lum * 2.0, 0.0, 1.0), b));
-        col = mix(col, u_hi, 1.0 - step(clamp(lum * 2.0 - 1.0, 0.0, 1.0), b));
+
+        // 3-Color Step Mapping (Background -> Midtone Electric Blue -> Highlight)
+        vec3 col = mix(u_bg, u_mid, 1.0 - step(clamp(totalLum * 2.05, 0.0, 1.0), b));
+        col = mix(col, u_hi, 1.0 - step(clamp(totalLum * 2.05 - 0.95, 0.0, 1.0), b));
+
         fragColor = vec4(col, 1.0);
       }
     `;
@@ -363,12 +402,32 @@
     const uBg = gl.getUniformLocation(prog, "u_bg");
     const uMid = gl.getUniformLocation(prog, "u_mid");
     const uHi = gl.getUniformLocation(prog, "u_hi");
+    const uContrast = gl.getUniformLocation(prog, "u_contrast");
+
+    // Texture setup for restored portrait
+    const texture = gl.createTexture();
+    gl.bindTexture(gl.TEXTURE_2D, texture);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+
+    // Initial 1x1 placeholder
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 1, 1, 0, gl.RGBA, gl.UNSIGNED_BYTE, new Uint8Array([0, 4, 246, 255]));
+
+    const portraitImg = new Image();
+    portraitImg.onload = () => {
+      gl.bindTexture(gl.TEXTURE_2D, texture);
+      gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, false);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, portraitImg);
+    };
+    portraitImg.src = "portrait_extended.png";
 
     const syncThemeColors = () => {
       const isDark = getResolvedTheme() === "dark";
       gl.useProgram(prog);
       if (isDark) {
-        // Dark Mode: Deep Obsidian bg (#07070c), Electric Cobalt mid (#0004f6), Pale Violet/Lime highlight (#cdccff)
+        // Dark Mode: Deep Obsidian bg (#07070c), Electric Cobalt mid (#0004f6), Pale Violet/Lavender highlight (#cdccff)
         gl.uniform3fv(uBg, [7 / 255, 7 / 255, 12 / 255]);
         gl.uniform3fv(uMid, [0 / 255, 4 / 255, 246 / 255]);
         gl.uniform3fv(uHi, [205 / 255, 204 / 255, 255 / 255]);
@@ -393,13 +452,12 @@
         canvas.height = h;
         gl.viewport(0, 0, w, h);
         gl.uniform2f(uRes, w, h);
-        gl.uniform1f(uPx, 4 * dpr);
       }
     };
     window.addEventListener("resize", resize);
     resize();
 
-    let cur = { x: canvas.width * 0.68, y: canvas.height * 0.5 };
+    let cur = { x: canvas.width * 0.68, y: canvas.height * 0.48 };
     let tgt = { ...cur };
     let ripple = 0.3;
     let tgtRipple = 0.3;
@@ -425,7 +483,9 @@
       gl.useProgram(prog);
       gl.uniform1f(uTime, elapsed);
       gl.uniform2f(uPointer, cur.x, cur.y);
-      gl.uniform1f(uRipple, ripple);
+      gl.uniform1f(uRipple, ripple * 0.45);   // dalga: 0.45
+      gl.uniform1f(uPx, 2.5 * dpr);           // pixel boyutu: 2.5
+      gl.uniform1f(uContrast, 1.25);          // kontrast ve derinlik: 1.25
       gl.drawArrays(gl.TRIANGLES, 0, 6);
       canvas.classList.add("is-live");
 
